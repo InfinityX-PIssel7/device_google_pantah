@@ -29,11 +29,10 @@ else
 $(call soong_config_set,pantah_fingerprint,prebuilt_dir,$(RELEASE_GOOGLE_BOOTLOADER_CHEETAH_DIR))
 endif
 
+TARGET_KERNEL_DIR ?= device/google/pantah-kernels/5.10/24Q4-12476354
+TARGET_BOARD_KERNEL_HEADERS ?= device/google/pantah-kernels/5.10/24Q4-12476354/kernel-headers
 
 TARGET_LINUX_KERNEL_VERSION := $(RELEASE_KERNEL_CHEETAH_VERSION)
-# Keeps flexibility for kasan and ufs builds
-TARGET_KERNEL_DIR ?= $(RELEASE_KERNEL_CHEETAH_DIR)
-TARGET_BOARD_KERNEL_HEADERS ?= $(RELEASE_KERNEL_CHEETAH_DIR)/kernel-headers
 
 $(call inherit-product-if-exists, vendor/google_devices/pantah/prebuilts/device-vendor-cheetah.mk)
 $(call inherit-product-if-exists, vendor/google_devices/gs201/prebuilts/device-vendor.mk)
@@ -426,8 +425,6 @@ PRODUCT_VENDOR_PROPERTIES += \
 # Keyboard bottom and side padding in dp for portrait mode and height ratio
 PRODUCT_PRODUCT_PROPERTIES += \
     ro.com.google.ime.kb_pad_port_b=8 \
-    ro.com.google.ime.kb_pad_port_l=11 \
-    ro.com.google.ime.kb_pad_port_r=11 \
     ro.com.google.ime.height_ratio=1.025
 
 # Enable camera exif model/make reporting
